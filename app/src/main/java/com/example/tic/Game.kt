@@ -13,14 +13,14 @@ class Game {
     var orderPlayer: Player = circlePlayer
 
     fun changeOrder() {
-        return
+        orderPlayer = playersChanges[orderPlayer]!!
     }
 
     fun makeMove(x: Int, y: Int) {
-        return
+        orderPlayer.putItem(x, y)
     }
 
-    fun getIconId() = 1
+    fun getIconId() = orderPlayer.getIconId()
 
-    fun checkWinning(x: Int, y: Int) = false
+    fun checkWinning(x: Int, y: Int) = orderPlayer.isWinning(x, y)
 }
