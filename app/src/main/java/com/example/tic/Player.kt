@@ -29,4 +29,5 @@ sealed class Player(@DrawableRes private val iconId: Int) {
 
     class CrossPlayer: Player(R.drawable.ic_cross)
     class CirclePlayer: Player(R.drawable.ic_circle)
+}
 
