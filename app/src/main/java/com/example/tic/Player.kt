@@ -10,21 +10,23 @@ sealed class Player(@DrawableRes private val iconId: Int) {
         arrayOf(false, false, false)
     )
 
-    fun isRowWinning(x: Int): Boolean = true
+    fun isRowWinning(x: Int): Boolean = (positions[x][0] && positions[x][1] && positions[x][2])
 
-    fun isColumnWinning(y: Int): Boolean = true
+    private fun isColumnWinning(y: Int): Boolean = (positions[0][y] && positions[1][y] && positions[2][y])
 
-    fun isDiagonalsWinning(): Boolean = true
+    fun isDiagonalsWinning(): Boolean =
+        positions[1][1] && ((positions[0][0] && positions[2][2]) || (positions[0][2] && positions[2][0]))
 
     fun putItem(x: Int, y: Int) {
-        return
+        positions[x][y] = true
     }
 
-    fun isWinning(x: Int, y: Int): Boolean = true
+    fun isWinning(x: Int, y: Int): Boolean{
+        return (isRowWinning(x) || isColumnWinning(y) || isDiagonalsWinning())
+    }
 
-    fun getIconId(): Int = 1
+    fun getIconId() = iconId
 
     class CrossPlayer: Player(R.drawable.ic_cross)
     class CirclePlayer: Player(R.drawable.ic_circle)
 
-}
