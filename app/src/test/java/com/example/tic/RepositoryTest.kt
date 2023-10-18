@@ -30,8 +30,9 @@ internal class RepositoryTest {
     fun makeMove() {
         val x = 1
         val y = 2
-        repository.makeMove(x, y) {}
+        repository.makeMove(x, y) {x, y -> }
 
+        repository.game.changeOrder()
         Assertions.assertEquals(true, repository.game.orderPlayer.positions[x][y])
     }
 }

@@ -9,10 +9,15 @@ class Repository {
 
     var counter: Int = 0
 
-    fun getIconId() = 0
+    fun getIconId() = game.getIconId()
 
-    fun makeMove(x: Int, y: Int, checkWin: () -> Unit) {
-        return
+    fun makeMove(x: Int, y: Int, checkWin: (Int, Int) -> Unit) {
+        counter += 1
+        game.makeMove(x, y)
+
+        checkWin(x, y)
+
+        game.changeOrder()
     }
 
 }
